@@ -1,0 +1,24 @@
+apiVesion: apps/v1
+Kind: Deployment
+metedata:
+	name: myapp-deployment
+	labels:
+		app: myapp
+		type: frontend
+spec:	
+	replicas: 3
+	strategy:
+		type: RollingUpdate  #Recreate
+	selector: 		
+		matchLabeles:
+			app: myapp
+			type frontend
+	template:
+		metadata:
+			name: myapp-pod
+			labels:
+				app: myapp
+				type frontend
+		spec:
+			containers:
+			- name: nginx-container
